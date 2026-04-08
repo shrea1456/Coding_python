@@ -1,21 +1,26 @@
+class Matrix:
+    def __init__(self, mat):
+        self.mat = mat
+    
+    def multiply(self, other):
+        result = []
+        
+        for i in range(len(self.mat)):
+            row = []
+            for j in range(len(other.mat[0])):
+                sum = 0
+                for k in range(len(other.mat)):
+                    sum = sum + self.mat[i][k] * other.mat[k][j]
+                row.append(sum)
+            result.append(row)
+        
+        return result
 
-A = [
-    [1, 2, 3],
-    [4, 5, 6]
-]
+m1 = Matrix([[2, 1, 2], [3, -1, 4]])
+m2 = Matrix([[0, 1, 2, 3], [-1, -2, 0, 1], [9, 10, -1, 4]])
 
-B = [
-    [7, 8],
-    [9, 10],
-    [11, 12]
-]
+res = m1.multiply(m2)
 
-result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
-
-
-for i in range(len(A)):
-    for j in range(len(B[0])):
-        for k in range(len(B)):
-
-for row in result:
-    print(row)
+print("Result:")
+for r in res:
+    print(r)
